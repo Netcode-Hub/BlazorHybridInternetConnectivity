@@ -1,0 +1,22 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+@inject IConnectivity connectivity
+<h3>Connectivity Status</h3>
+
+<p>Network Access: @networkAccess</p>
+<p>Connection Profiles: @connectionProfile </p>
+
+@code{
+    NetworkAccess networkAccess;
+    string connectionProfile;
+
+    protected override void OnInitialized()
+    {
+        networkAccess = connectivity.NetworkAccess;
+        connectionProfile = string.Join(", ", connectivity.ConnectionProfiles);
+    }
+}
